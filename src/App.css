@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  text-align: center;
 }
 
 body {
@@ -78,18 +79,17 @@ input {
 
 .btn {
   font-family: "Raleway", sans-serif;
-  margin: 1rem;
-  padding: 0.7rem;
-  width: 30%;
-  height: auto;
-  background-color: white;
-  color: #111827;
+  
+  
+  padding: 10px 10px;
+  background-color: rgb(77, 77, 77);
+  color: #ffffff;
   border-radius: 10px;
-  box-shadow: 2px 2px #d1d5db;
   border: none;
   cursor: pointer;
   font-size: 1.3rem;
   font-weight: 700;
+  text-align: center;
 }
 
 input:focus {

@@ -1,8 +1,8 @@
 export default function ConvertButton()
 {
     return(
-        <div>
-            <button class="btn" id="btn">Convert</button>
+        <div id="conversion-rate">
+            <button className="btn" id="btn">Convert</button>
         </div>
     )
 }
