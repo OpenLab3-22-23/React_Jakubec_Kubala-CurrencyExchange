@@ -7,22 +7,15 @@ import Header from './Header'
 import ConvertButton from './ConvertButton'
 
 function App() {
-
-  
-
   return (
     
     <div className="App">
       <Header/>
-      <Selector/>
-      <Selector/>
-      <ConvertButton/>
+      <Selector convertFrom={"0"} dropBoxSelection={"Moznost1"} dropBoxSelection2={"Moznost2"}/>
+      <Selector convertFrom={"5"} dropBoxSelection={"Moznost1"} dropBoxSelection2={"Moznost2"}/>
+      <ConvertButton currency={"$"}/>
     </div>
-    
-  )
-  
-  
-  
+  )  
 }
 
 export default App

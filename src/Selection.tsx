@@ -1,11 +1,7 @@
 import { useState } from "react"
 
-export default function Selector()
-
+export default function Selector({convertFrom, dropBoxSelection, dropBoxSelection2} :{convertFrom:string, dropBoxSelection:string, dropBoxSelection2:string})
 {
-    const [convertFrom, setconvertFrom] = useState<string>("Ahoj") 
-    const [dropBoxSelection, setdropBoxSelection] = useState<string>("Moznost1") 
-    const [dropBoxSelection2, setdropBoxSelection2] = useState<string>("Moznost2") 
     return(
         <div className="top_box"> 
          <input type="" name="" value={convertFrom}/>
@@ -16,3 +12,4 @@ export default function Selector()
         </div>
     )
 }
+
