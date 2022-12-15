@@ -1,12 +1,15 @@
 import { useState } from "react"
 
-export default function Selector({convertFrom, dropBoxSelection} :{convertFrom:string, dropBoxSelection:string})
+export default function Selector({options} :{options:Array<string>})
 {
     return(
         <div className="top_box"> 
-         <input type="" name="" value={convertFrom}/>
-         <select name="currency">
-            <option value="">{dropBoxSelection}</option>
+         <input type="" name=""/>
+         <select name="currency" id="selectorset">
+            {options.map((currencies) => (
+              <option value="">{currencies}</option>
+             ))} 
+           
          </select>
         </div>
     )

@@ -6,30 +6,38 @@ import Selector from './Selection'
 import Header from './Header'
 import ConvertButton from './ConvertButton'
 
-function App() {
-  
-  fetch("https://api.frankfurter.app/currencies")
-  .then((data) => data.json())
-  .then((data) => {
-    display(data);
-  });
+function App(this: any) {
 
-  function display(data:DataTransfer){
-    const entries = Object.entries(data);
+
+  const [currencies, setCurrencies] = useState({})
+  const [letters, setLetters] = useState([])
+ 
+
+  
+  function AddLettersToArray(){
+    const entries = Object.entries(currencies);
     for (var i = 0; i < entries.length; i++) {
-      Selector += `<option value="${entries[i][0]}">${entries[i][0]}</option>`;
-      select[1].innerHTML += `<option value="${entries[i][0]}">${entries[i][0]}</option>`;
+      
+      //add this to array 
+      setLetters([entries[i][0]]);
     }
   }
 
-  
+  useState(() => {
+    fetch("https://api.frankfurter.app/currencies")
+    .then((data) => data.json())
+    .then((data) => {
+        setCurrencies(data);
+        AddLettersToArray();
+    });
+  },[])
   
   return (
     
     <div className="App">
       <Header/>
-        <Selector convertFrom={"5"} dropBoxSelection={"Moznost1"} />
-        <Selector convertFrom={"10"} dropBoxSelection={"Moznost1"}/>
+        <Selector options = {letters} />
+        <Selector options = {letters} />
       <ConvertButton currency={"$"}/>
 
       
