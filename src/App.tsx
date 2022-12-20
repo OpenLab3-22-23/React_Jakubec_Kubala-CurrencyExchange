@@ -9,36 +9,47 @@ import ConvertButton from './ConvertButton'
 function App(this: any) {
 
 
-  const [currencies, setCurrencies] = useState({})
-  const [letters, setLetters] = useState([])
- 
+  const [letters, setLetters] = useState<any[]>([]);
+  const [currencyFrom, setCurrencyFrom] = useState(0);
+  const [currencyTo, setCurrencyTo] = useState(0);
+  const PrintWrite1 = true;
+  const PrintWrite2 = false;
 
-  
-  function AddLettersToArray(){
-    const entries = Object.entries(currencies);
-    for (var i = 0; i < entries.length; i++) {
-      
-      //add this to array 
-      setLetters([entries[i][0]]);
-    }
-  }
 
   useState(() => {
     fetch("https://api.frankfurter.app/currencies")
     .then((data) => data.json())
     .then((data) => {
-        setCurrencies(data);
-        AddLettersToArray();
+        AddLettersToArray(data);
+
     });
   },[])
   
+  function AddLettersToArray(data:any){
+    const entries = Object.entries(data);
+    const tmpCurrencies = [];
+    for (const [key, value] of Object.entries(entries)) {      
+      tmpCurrencies.push(value[0])
+    }
+    setLetters(tmpCurrencies)
+  }
+
+  function setCurrencyFromFnc(e: any) {
+    setCurrencyFrom(e.target.value)
+  }
+
+  function setCurrencyToFnc(e: any) {
+    setCurrencyTo(e.target.value)
+  }
+
+
   return (
     
     <div className="App">
       <Header/>
-        <Selector options = {letters} />
-        <Selector options = {letters} />
-      <ConvertButton currency={"$"}/>
+        <Selector options = {letters} isToPrint = {PrintWrite1} onChange = {setCurrencyFromFnc}/>
+        <Selector options = {letters} isToPrint = {PrintWrite2} onChange = {setCurrencyToFnc}/>
+      <ConvertButton />
 
       
     </div>
